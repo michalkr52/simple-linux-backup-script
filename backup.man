@@ -1,0 +1,61 @@
+./" Manpage for your script
+.TH man 1 "09 November 2023" "1.1" "backup.sh man page"
+.SH NAME
+.B backup.sh 
+\- a script facilitating the backup creation process. It includes mechanisms for periodic backups and settings storage.
+.SH SYNOPSIS
+.B backup.sh
+.P
+.B backup.sh \fR[\fB\-v\fR|\fB\-h\fR]
+.P
+.B backup.sh \fR[\fB\-f \fIFILE_NAME\fR]
+.SH DESCRIPTION
+.B backup.sh 
+is a script that allows for easy backup creation. It allows entering directories in various ways: selecting a directory from a list, 
+entering a path, or using a graphical file selection dialog. It features options for periodic backups and settings storage.
+.P
+Upon running the script, the main menu is displayed, where the user can choose one of the five options. 
+These include different methods of entering paths, as well as an option to display the currently selected directories and proceed to create a backup. 
+After confirming the settings, the user chooses whether the backup should be saved as a directory or a .tar.gz archive.
+.P
+After saving, the user has the option to enable periodic backups for the just-created backup. 
+This option is an entry in the crontab file that calls an additional script 
+.B backup_cron.sh
+with the 
+.B -f
+option, providing the configuration file for the newly created backup.
+.P
+Upon execution, the user can load options from a file. In this case, the added directories are visible along with the other selected directories. Saving settings is possible after creating a backup.
+.P
+Backups have names following the format: 
+.I backup-YYYY-MM-DD-HH:MM:SS
+\-
+.I YYYY 
+is the year,
+.I MM
+is the month,
+.I DD
+is the day,
+.I HH
+is the hour,
+.I MM
+is the minute, and
+.I SS
+is the second at the time of backup creation. The backup maintains the internal structure of the selected directories.
+.SH OPTIONS
+.B \-v
+.IP
+This option displays information about the author and script version.
+.P
+.B \-h
+.IP
+This option displays brief information about the script, as well as available commands and their functionality.
+.P
+.BI \-p\  file
+.IP
+This option allows entering directories from a file with the specified path. 
+They will be available for use in creating backups.
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Michał Krause 188592, computer science, semester 2, group 4
